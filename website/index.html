@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Weather App</title>
+</head>
+<body>
+    <main class="app">
+        <div class="input">
+            <div class ="holder headline">
+                <h1>Weather Journal App</h1>
+            </div>
+            
+            <form action="" method="POST" class="form">
+                <section>
+                    <div class="holder zip" id="zip_container">
+                        <input type="text" location="location" id="zip" placeholder="Enter zip code here" autocomplete="postal-code" minlength="4" required="true">
+                        <label class="label__shrink" for="zip__code">Enter zip code here</label>
+                    </div>
+        
+                    <div class="holder location" id="location_container">
+                        <input type="text" city country="city country" id="city__country" placeholder="Enter city & country" autocomplete="address-level2 country" minlength="2" required="true">
+                        <label class="label__shrink" for="location">Enter city & country</label>
+        
+                    </div>
+                </section>
+             
+                <div class="holder feelings" id="mood_container">
+                    <label for="mood">Enter your feelings here:</label>
+                    <textarea class= "myInput" id="mood" placeholder="Enter your feelings here" rows="9" cols="50" minlength="3" required="true"></textarea>
+                    <button id="generate" type="submit"> Generate </button>
+                </div>
+            </form>
+        </div>
+
+        <div class="holder entry">
+            <h2 class = "title">Most Recent Entry</h2>
+            <div id = "entryHolder">
+                <div class="details" id = "date"></div> 
+                <div class="details" id = "temp"></div>
+                <div id = "new__entry"></div>
+            </div>
+        </div>
+    </main>
+    <script src="app.js" type="text/javascript"></script>
+</body>
+</html>

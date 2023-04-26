@@ -1,0 +1,294 @@
+@font-face {
+    font-family: 'system85-regular-pro';
+    src: url('fonts/system85-regular-pro.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html{
+    font-size: 10px;
+}
+
+body{
+    overscroll-behavior: none;
+}
+
+:root{
+    --font-family: 'system85-regular-pro';
+    --body-size: clamp(3.2rem, 5vw, 10rem);
+    --heading-size: clamp(1.6rem , 1.5vw, 2.4rem);
+    --subhead-size: clamp(2.4rem, 3vw, 7rem);
+    --label-size: clamp(1.8rem, 2vh, 4rem);
+    --p-size: 2.4rem;
+
+    --margin: 1.6rem;
+    --padding: 0.8rem;
+    --lrg-padding: calc(var(--margin)*5);
+
+    --bg-colour: rgb(66, 137, 250);
+    --key-c: rgb(155, 255, 210);
+    --default: rgb(155, 187, 255);
+    --sub-c: rgb(255, 255, 255);
+}
+
+/* Typography */
+body,
+textarea{
+    background-color: var(--bg-colour);
+    font-family: var(--font-family);
+}
+
+h1{
+    text-transform: uppercase;
+    font-size: var(--heading-size);
+    color: var(--sub-c);
+}
+
+h2{
+    font-size: var(--subhead-size);
+    color: var(--bg-colour);
+}
+
+.details{
+    font-size: var(--label-size);
+    color: var(--sub-c);
+}
+
+p{
+    font-size: var(-p-size);
+    color: var(--sub-c);
+}
+
+.error{
+    color: var(--sub-c);
+    padding-block-end: var(--margin);
+}
+
+label,
+input[type=text],
+textarea::placeholder,
+textarea{
+    font-size: var(--body-size);
+    color: var(--sub-c);
+}
+
+.input{
+    display: flex;
+    flex-direction: column;
+    gap: var(--lrg-padding);
+    padding-block-end: var(--lrg-padding);
+}
+
+.entry{
+    background-color: var(--key-c);
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    gap: var(--lrg-padding);
+    height: 50vh;
+}
+
+#entryHolder{
+    display: flex;
+    flex-direction: column;
+    gap: var(--padding);
+
+    border: 1px solid var(--bg-colour);
+    padding: var(--padding);
+
+    font-size: var(--label-size);
+    color: var(--bg-colour);
+
+    visibility: hidden;
+}
+
+form,
+form > .holder{
+    display: flex;
+    flex-direction: column;
+    gap: var(--margin);
+}
+
+.holder{
+    padding: var(--margin);
+    transition: all .3s;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.label__shrink{
+    color: var(--default);
+    display: block;
+    opacity: 1;
+    transform: translateY(-5rem);
+    transform-origin: 0 0;
+    transition: all .15s ease-in;
+}
+
+input[type=text]{
+    background-color: var(--bg-colour);
+
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 0.5px solid var(--default);
+    outline: none;
+
+    width: 100%;
+    padding-block-end: var(--padding);
+
+    transition: all .5s ease-in;
+}
+
+input[type=text]:focus + .label__shrink,
+input[type=text]:not(:placeholder-shown) + .label__shrink{
+    transform: translateY(-6.5rem) scale(0.4);
+    color: var(--sub-c);
+}
+
+input[type=text]:focus-within{
+    background-color: var(--bg-colour);
+    border: none;
+    outline: none;
+}
+
+input[type=text]:focus-within,
+input[type=text]:not(:placeholder-shown){
+    border-bottom: 1px solid var(--key-c);
+    color: var(--key-c);
+}
+
+input::placeholder{
+    font-size: var(--body-size);
+    color: transparent;
+}
+
+/* Text Area Styling */
+textarea{
+    border: 1px solid var(--default);
+    padding: var(--padding);
+}
+
+.feelings > label{
+    font-size: var(--heading-size);
+}
+
+textarea:focus,
+textarea:not(:placeholder-shown),
+textarea::before{
+    outline: none;
+    border: 1.05px solid var(--key-c);
+    color: var(--key-c);
+    transition: all .3s ease-in;
+}
+
+
+textarea::placeholder{
+    color: var(--default);
+}
+
+textarea:focus-within::placeholder{
+    color: transparent;
+    transition: all .3s ease;
+}
+
+button{
+    margin-block-start: var(--margin);
+    height: clamp(5rem, 6vh, 8rem);
+    font-size: var(--label-size);
+    border: 1px solid var(--default);
+    background-color: var(--bg-colour);
+    color: var(--sub-c);
+    transition: all .3s;
+}
+
+button:hover,
+button:focus{
+    cursor: pointer;
+    background-color: var(--key-c);
+    border: 1 solid var(--key-c);
+    color: var(--bg-colour);
+}
+
+
+
+/* Media Queries */
+@media (min-width: 600px) and (max-width: 900px) {
+    section{
+        display: flex;
+        flex-direction: row;
+        gap: var(--margin);
+    }
+
+    .label__shrink{
+        transform: translateY(-6rem);
+    }
+
+    input[type=text]:focus + .label__shrink,
+    input[type=text]:not(:placeholder-shown) + .label__shrink{
+        transform: translateY(-9rem) scale(0.4);
+    }
+}
+
+@media (min-width: 901px) {
+    section{
+        display: flex;
+        gap: var(--margin);
+    }
+
+    .label__shrink{
+        transform: translateY(-7rem);
+    }
+
+    input[type=text]:focus + .label__shrink,
+    input[type=text]:not(:placeholder-shown) + .label__shrink{
+        transform: translateY(-10rem) scale(0.3);
+    }
+
+    .feelings textarea {
+        width: 50%;
+        height: clamp(15rem, 20vh, 80rem);
+        resize: vertical;
+    }
+    
+    button{
+        width: 20%;
+    }
+}
+
+@media (min-width: 1290px){
+    section{
+        display: flex;
+        gap: var(--margin);
+    }
+
+    .label__shrink{
+        transform: translateY(-8rem);
+    }
+
+    input[type=text]:focus + .label__shrink,
+    input[type=text]:not(:placeholder-shown) + .label__shrink{
+        transform: translateY(-11rem) scale(0.3);
+    }
+}
+
+@media (min-width: 1600px){
+
+    section{
+        display: flex;
+        gap: var(--margin);
+    }
+
+    .label__shrink{
+        transform: translateY(-9rem);
+    }
+
+    input[type=text]:focus + .label__shrink,
+    input[type=text]:not(:placeholder-shown) + .label__shrink{
+        transform: translateY(-13rem) scale(0.2);
+    }
+}
